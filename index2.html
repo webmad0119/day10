@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.onkeydown = function (e) {
+            //please reactivate this line should you want to see all the keycodes as you pressed keys
+            //console.log(e.keyCode)
+
+            switch (e.keyCode) {
+                case 39:
+                    console.log("you have pressed right cursor")
+                    break;
+                case 37:
+                    console.log("you have pressed left cursor")
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
