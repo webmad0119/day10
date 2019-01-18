@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <script>
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        var posX = 0
+        var w = 1000
+        var h = 800
+        var score = 0;
+
+        function degsToRad(degrees) {
+            return degrees * Math.PI / 180
+        }
+
+        //here we translate initially the grid to the screen center
+        ctx.translate(w/2, h/2)
+
+        //this variable holds the number of lines you want to draw
+        var starComplexity = 45/40
+        for (var i = 0; i < 360 / starComplexity; i++) {
+            // ctx.translate(0, i * 10)
+            //here we rotate acumulatively the grid
+            ctx.rotate(degsToRad(starComplexity * i))
+
+            //the next lines draw a straight line
+            ctx.beginPath()
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = `rgba(${Math.random() * 255}, 0, 0, 0.3)`
+            ctx.moveTo(0, 0)
+            ctx.lineTo(400, 0)
+            ctx.stroke();
+        }
+
+        // ctx.beginPath()
+        // ctx.lineWidth = 5;
+        // ctx.strokeStyle = "#ff0000"
+        // ctx.moveTo(100, 100)
+        // ctx.lineTo(200, 100)
+        // ctx.stroke();
+    </script>
+</body>
+
+</html>

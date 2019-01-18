@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <script>
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        ctx.font = "50px Arial";
+
+        //source-over
+        ctx.fillText("source-over", 10, 120);
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(70, 150, 100, 100);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(160, 200, 50, 0, 2 * Math.PI);
+        ctx.fill();
+
+        //source-atop
+        ctx.fillStyle = 'black';
+        ctx.fillText("source-atop", 350, 120)
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(400, 150, 100, 100);
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(400, 200, 50, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // xor
+        ctx.globalCompositeOperation = 'xor';
+        ctx.fillStyle = 'black';
+        ctx.fillText("xor", 740, 120)
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(700, 150, 100, 100);
+        ctx.globalCompositeOperation = 'xor';
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(800, 250, 50, 0, 2 * Math.PI);
+        ctx.fill();
+    </script>
+</body>
+
+</html>

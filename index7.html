@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <script>
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        var posX = 0
+        var w = 1000
+        var h = 800
+        var score = 0;
+
+        function degsToRad(degrees) {
+            return degrees * Math.PI / 180
+        }
+
+        for (var i = 0; i < 500; i+=50) {
+            ctx.save()
+            //ctx.rotate(degsToRad(5))
+            
+            //the next lines draw a straight line
+            ctx.beginPath()
+            ctx.lineWidth = 10;
+            ctx.moveTo(0, i)
+            ctx.translate(100, 100)
+
+            ctx.lineTo(300, i)
+            ctx.stroke();
+            ctx.restore()
+        }
+    </script>
+</body>
+
+</html>

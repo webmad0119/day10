@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <!-- <button id="clickme">Accelerate!</button> -->
+    <input type="range" min="1" max="5" id="clickme" value="1">
+    <script>
+        var canvas = document.getElementById("canvas2")
+        var ctx = canvas.getContext('2d')
+
+        document.getElementById("clickme").onchange = function () {
+            ball.vx = +this.value
+        }
+
+        //please note that vx and vy are the velocity for each axis
+        //if we change these values we cause the ball to run faster/slower
+        var ball = {
+            x: 100,
+            y: 100,
+            vx: 1,
+            vy: 0,
+            radius: 25,
+            color: 'green',
+            draw: function () {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        };
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ball.draw();
+            //please note how the velocity is used to change the x and y positions
+            //remember that if the vx and / or vy change, it has an impact in how the new positions are calculated
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+        }
+
+        setInterval(update, 20)
+    </script>
+</body>
+
+</html>

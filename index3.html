@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+
+    <script>
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        var posX = 0
+        var w = 1000
+        var h = 800
+
+        //we set an interval con control the animation
+        setInterval(function () {
+            //please note that for every frame we have to clear out all the canvas. otherwise you see a trail!
+            ctx.clearRect(0, 0, w, h)
+
+            ctx.fillStyle = '#ff0000'
+            //this variable posX controls the X position, which can be changed from the switch/case statement
+            ctx.fillRect(200 + posX, 200, 100, 100)
+        }, 10)
+
+
+        document.onkeydown = function (e) {
+            //please reactivate this line should you want to see all the keycodes as you pressed keys
+            //console.log(e.keyCode)
+
+            switch (e.keyCode) {
+                case 39:
+                    posX++
+                    console.log("you have pressed right cursor")
+                    break;
+                case 37:
+                    posX--
+                    console.log("you have pressed left cursor")
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

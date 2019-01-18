@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <button id="clickme">CLICK ME!</button>
+    <script>
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        var posX = 0
+        var w = 1000
+        var h = 800
+        var score = 0;
+
+        // when we click this button, we add 100 to score, to cause a change in the canvas text 
+        document.getElementById("clickme").onclick = function () {
+            score+=100
+        }
+
+        ctx.font = '48px serif';
+        
+        setInterval(function () {
+            ctx.clearRect(0, 0, 1000, 800)
+
+            //here we paint the text
+            ctx.fillText('Score: ' + score, 10, 50);
+        }, 10)
+    </script>
+</body>
+
+</html>
