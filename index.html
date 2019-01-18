@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas2" width="1000" height="800"></canvas>
+    <script>
+        //1. I generate a new Image (this is javascript standard constructor)
+        //2. I assign a source to that image object
+        //3. When the image is loaded then I can add it to the context
+
+        var canvasDOM = document.getElementById("canvas2")
+        var ctx = canvasDOM.getContext('2d')
+
+        var posY = 100
+        var flower = new Image()
+        flower.src = "dalia.jpg"
+
+        flower.onload = function () {
+            setInterval(function () {
+                ctx.drawImage(flower, 100, posY++, flower.width / 2.5, flower.height / 2.5)
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>
